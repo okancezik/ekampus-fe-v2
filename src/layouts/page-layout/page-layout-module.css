@@ -1,0 +1,12 @@
+.page_container {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .page__nav {
+    flex: 0.2;
+  }
+  
+  .page__timeline {
+    flex: 0.8;
+  }

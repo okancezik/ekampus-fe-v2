@@ -1,13 +1,11 @@
 import React from 'react';
 import './App.css';
-import PrimaryButton from './components/primary-button/primary-button';
-import EKAvatar from './components/ek-avatar/ek-avatar';
+import PageLayout from './layouts/page-layout/page-layout';
 
 function App() {
   return (
     <div className="App">
-      <PrimaryButton>Kaydet</PrimaryButton>
-      <EKAvatar size={64}></EKAvatar>
+      <PageLayout />
     </div>
   );
 }
