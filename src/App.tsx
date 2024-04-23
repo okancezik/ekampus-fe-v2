@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.css';
-import PageLayout from './layouts/page-layout/page-layout';
+import BaseLayout from './layouts/base-layout/base-layout';
 
 function App() {
   return (
     <div className="App">
-      <PageLayout />
+      <BaseLayout/>
     </div>
   );
 }
