@@ -1,5 +1,6 @@
 .side-container{
     position: fixed;
+    height: 100%;
 }
 
 .header-container{

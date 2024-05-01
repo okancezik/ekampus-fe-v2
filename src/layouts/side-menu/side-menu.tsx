@@ -3,12 +3,13 @@ import './side-menu.css';
 import logo from '../../assets/ekampus.png';
 import { HomeOutlined, CompassOutlined, SearchOutlined } from '@ant-design/icons';
 import EKAvatar from '../../components/ek-avatar/ek-avatar';
+import { Image } from 'antd';
 
 const SideMenu = () => {
     return (
         <div className='side-container'>
             <div className='header-container'>
-                <img src={logo} alt='logo' className='logo' />
+                <Image src={logo} alt='logo' className='logo' style={{height:"80px"}} />
                 <div className='options-container'>
                     <div className='option'>
                         <HomeOutlined />

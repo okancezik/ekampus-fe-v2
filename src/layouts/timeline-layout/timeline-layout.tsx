@@ -1,16 +1,13 @@
 import React from 'react'
 import './timeline-layout-module.css'
+import EKCard from '../../components/ek-card/ek-card'
 
 const TimelineLayout = () => {
   return (
     <div className='timeline_container'>
-        <div className='timeline__left'>
-            <p>Post</p>
-        </div>
-        <div className='timeline__right'>
-            Suggestions
-        </div>
+      <EKCard />
     </div>
+    
   )
 }
 
