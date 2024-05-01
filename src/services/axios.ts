@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useAtom } from "jotai";
 import { loadingAtom } from "../store/global-atoms";
+import { getV1Services } from "../api/common-service-definitions";
 
 export const useAxiosServiceClient = () => {
   const [, setLoading] = useAtom(loadingAtom);
@@ -27,4 +28,12 @@ export const useAxiosServiceClient = () => {
       return Promise.reject(error);
     }
   );
+
+  const services = getV1Services({
+    axiosClient: axios
+  });
+
+  return {
+    ...services
+  }
 };
