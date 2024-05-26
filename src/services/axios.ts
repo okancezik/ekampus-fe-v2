@@ -6,6 +6,8 @@ import { getV1Services } from "../api/common-service-definitions";
 export const useAxiosServiceClient = () => {
   const [, setLoading] = useAtom(loadingAtom);
 
+  axios.defaults.withCredentials = true
+
   axios.interceptors.request.use((config) => {
     setLoading(true);
     console.log("req: ", config);

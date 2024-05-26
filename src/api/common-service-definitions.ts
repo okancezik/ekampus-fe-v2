@@ -1,5 +1,6 @@
 import { AxiosInstance } from 'axios';
 import { PostApi } from "./services/post-api"
+import { AuthApi } from './services/auth-api';
 
 export interface ServicesProps{
     axiosClient:AxiosInstance;
@@ -7,7 +8,8 @@ export interface ServicesProps{
 
 const getV1Services = (props:ServicesProps)=>{
     return {
-        PostApi: new PostApi(props.axiosClient)
+        PostApi: new PostApi(props.axiosClient),
+        AuthApi: new AuthApi(props.axiosClient)
     }
 }
 
