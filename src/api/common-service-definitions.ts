@@ -9,7 +9,7 @@ export interface ServicesProps{
 const getV1Services = (props:ServicesProps)=>{
     return {
         PostApi: new PostApi(props.axiosClient),
-        AuthApi: new AuthApi(props.axiosClient)
+        AuthApi: new AuthApi(props.axiosClient),
     }
 }
 

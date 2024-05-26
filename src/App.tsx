@@ -1,9 +1,12 @@
 import React, { useEffect } from 'react';
 import './App.css';
-import BaseLayout from './layouts/base-layout/base-layout';
 import { useAtom } from 'jotai';
 import { messageAtom } from './store/global-atoms';
 import { message } from 'antd';
+import { Route, Routes } from 'react-router-dom';
+import Login from './pages/login/login';
+import SecureLayout from './layouts/secure-layout/secure-layout';
+import Home from './pages/home/home';
 
 function App() {
   const [toastMessage] = useAtom(messageAtom);
@@ -29,7 +32,13 @@ function App() {
   }, [toastMessage, setMessage]);
 
   return (
-    <BaseLayout />
+    <Routes>
+      <Route path='/' element={<Login />} />
+
+      <Route path='/home' element={<SecureLayout>
+        <Home />
+      </SecureLayout>} />
+    </Routes>
   );
 }
 

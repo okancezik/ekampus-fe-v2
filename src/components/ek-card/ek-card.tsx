@@ -2,10 +2,18 @@ import React from 'react'
 import { Avatar, Card, CardProps, Skeleton } from 'antd'
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
 import Meta from 'antd/es/card/Meta';
+import { ListPostResponseModel } from '../../api/models/list-post-response-model';
+import { useAtom } from 'jotai';
+import { loadingAtom } from '../../store/global-atoms';
 
-interface EKCardProps extends CardProps { }
+interface EKCardProps extends CardProps {
+    data: ListPostResponseModel;
+}
 
-const EKCard = (props: EKCardProps) => {
+const EKCard = ({ data }: EKCardProps) => {
+
+    const [loading] = useAtom(loadingAtom)
+
     return (
         <Card
             actions={[
@@ -14,11 +22,11 @@ const EKCard = (props: EKCardProps) => {
                 <EllipsisOutlined key="ellipsis" />,
             ]}
         >
-            <Skeleton loading={false} avatar active>
+            <Skeleton loading={loading} avatar active>
                 <Meta
                     avatar={<Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=2" />}
-                    title="Card title"
-                    description="This is the description"
+                    title={data.comment}
+                    description={data.loadDate}
                 />
             </Skeleton>
         </Card>

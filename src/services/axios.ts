@@ -6,15 +6,17 @@ import { getV1Services } from "../api/common-service-definitions";
 export const useAxiosServiceClient = () => {
   const [, setLoading] = useAtom(loadingAtom);
 
-  axios.defaults.withCredentials = true
+  const axiosClient = axios.create({
+    withCredentials:true
+  })
 
-  axios.interceptors.request.use((config) => {
+  axiosClient.interceptors.request.use((config) => {
     setLoading(true);
     console.log("req: ", config);
     return config;
   });
 
-  axios.interceptors.response.use(
+  axiosClient.interceptors.response.use(
     (response) => {
       if (!response.data.success) {
         setLoading(false);
@@ -32,7 +34,7 @@ export const useAxiosServiceClient = () => {
   );
 
   const services = getV1Services({
-    axiosClient: axios
+    axiosClient: axiosClient
   });
 
   return {

@@ -2,25 +2,34 @@ import React, { useEffect, useState } from 'react'
 import './timeline-layout-module.css'
 import EKCard from '../../components/ek-card/ek-card'
 import { useAxiosServiceClient } from '../../services/axios'
+import { ListPostResponseModel } from '../../api/models/list-post-response-model'
+import { useAtom } from 'jotai'
+import { messageAtom } from '../../store/global-atoms'
 
 const TimelineLayout = () => {
 
-  const [posts,setPosts] = useState([]); 
-  const {PostApi} = useAxiosServiceClient(); 
+  const [, setMessage] = useAtom(messageAtom)
+  const [posts, setPosts] = useState<ListPostResponseModel[]>([]);
+  const { PostApi } = useAxiosServiceClient();
 
-  useEffect(()=>{
-    PostApi.GetAllPosts().then((response)=>{setPosts(response.data.data)}).catch(()=>{})
-  },[])
+  useEffect(() => {
+    PostApi.GetAllPosts().then((response) => { 
+      setPosts(response.data.data) 
+    }).catch(() => { 
+      setMessage({ type: "error", message: "Gönderiler Listelenemedi" }) 
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <div className='timeline_container'>
       {
         posts.map((post) => {
-          return <EKCard />
+          return <EKCard data={post}/>
         })
       }
     </div>
-    
+
   )
 }
 
