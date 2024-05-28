@@ -7,6 +7,7 @@ import { Route, Routes } from 'react-router-dom';
 import Login from './pages/login/login';
 import SecureLayout from './layouts/secure-layout/secure-layout';
 import Home from './pages/home/home';
+import SignUp from './pages/sign-up/sign-up';
 
 function App() {
   const [toastMessage] = useAtom(messageAtom);
@@ -34,7 +35,7 @@ function App() {
   return (
     <Routes>
       <Route path='/' element={<Login />} />
-
+      <Route path='/sign' element={<SignUp />} />
       <Route path='/home' element={<SecureLayout>
         <Home />
       </SecureLayout>} />

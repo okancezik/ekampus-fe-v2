@@ -45,7 +45,19 @@
 }
 
 .more-container{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     position: fixed;
     bottom: 1rem;
-    left: 1rem;
+    cursor: pointer;
+}
+
+.more-container svg{
+    font-size: 1.5rem;
+}
+
+.more-container span{
+    font-size: 1.25rem;
+    font-weight: 500;
 }

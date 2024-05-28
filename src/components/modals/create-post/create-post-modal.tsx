@@ -19,9 +19,9 @@ const CreatePostModal = (props: CreatePostModalProps) => {
     const [, setMessage] = useAtom(messageAtom)
 
     const onFinish = (values: { comment: string }) => {
-        console.log("asf")
         if (userInfo && userInfo.id) {
             const model = { studentId: userInfo?.id, comment: values.comment }
+            console.log("model:", model)
             PostApi.Add(model).then((response) => {
                 setMessage({
                     type: "success",

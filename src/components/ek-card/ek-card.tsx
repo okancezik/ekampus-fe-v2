@@ -1,10 +1,12 @@
 import React from 'react'
-import { Avatar, Card, CardProps, Skeleton } from 'antd'
+import './ek-card-module.css'
+import { Card, CardProps, Flex, Skeleton, Space } from 'antd'
 import { EditOutlined, EllipsisOutlined, SettingOutlined } from '@ant-design/icons';
-import Meta from 'antd/es/card/Meta';
 import { ListPostResponseModel } from '../../api/models/list-post-response-model';
 import { useAtom } from 'jotai';
 import { loadingAtom } from '../../store/global-atoms';
+import EKAvatar from '../ek-avatar/ek-avatar';
+import dayjs from 'dayjs';
 
 interface EKCardProps extends CardProps {
     data: ListPostResponseModel;
@@ -23,11 +25,16 @@ const EKCard = ({ data }: EKCardProps) => {
             ]}
         >
             <Skeleton loading={loading} avatar active>
-                <Meta
-                    avatar={<Avatar src="https://api.dicebear.com/7.x/miniavs/svg?seed=2" />}
-                    title={data.comment}
-                    description={data.loadDate}
-                />
+                <Flex gap={"1rem"}>
+                    <EKAvatar />
+                    <Space direction='vertical'size={"large"}>
+                        <div style={{display:"flex",flexDirection:"column",gap:"0.3rem"}}> 
+                            <span className='header'>{`${data.firstName} ${data.lastName}`}</span>
+                            <span className='date'>{dayjs(data.loadDate).format('DD/MM/YYYY')}</span>
+                        </div>
+                        <span className='body'>{data.comment}</span>
+                    </Space>
+                </Flex>
             </Skeleton>
         </Card>
     )

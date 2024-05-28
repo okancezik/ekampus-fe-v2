@@ -1,13 +1,17 @@
 import React, { useState } from 'react'
 import './side-menu.css';
 import logo from '../../assets/ekampus.png';
-import { HomeOutlined, CompassOutlined, SearchOutlined, PlusCircleOutlined } from '@ant-design/icons';
+import { HomeOutlined, CompassOutlined, SearchOutlined, PlusCircleOutlined, LogoutOutlined } from '@ant-design/icons';
 import EKAvatar from '../../components/ek-avatar/ek-avatar';
 import { Image } from 'antd';
 import CreatePostModal from '../../components/modals/create-post/create-post-modal';
+import { useNavigate } from 'react-router-dom';
+import { useAtom } from 'jotai';
+import { messageAtom } from '../../store/global-atoms';
 
 const SideMenu = () => {
-
+    const navigate = useNavigate();
+    const [,setMessage] = useAtom(messageAtom)
     const [isOpenCreatePostModal, setOpenCreatePostModal] = useState<boolean>(false)
 
     return (
@@ -37,10 +41,14 @@ const SideMenu = () => {
                     </div>
                 </div>
             </div>
-            <div className='more-container'>
-                more
+            <div className='more-container' onClick={() => {
+                setMessage({type:"success",message:"Çıkış Yapıldı"})
+                navigate('/')
+            }}>
+                <LogoutOutlined />
+                <span>Çıkış Yap</span>
             </div>
-            <CreatePostModal open={isOpenCreatePostModal}/>
+            <CreatePostModal open={isOpenCreatePostModal} />
         </div>
     )
 }

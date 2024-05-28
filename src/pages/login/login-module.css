@@ -1,7 +1,4 @@
-.container{
-    height: 100vh;
-}
-
-.login-form{
-    width: 100%;
+.footer{
+    cursor: pointer;
+    color: blue;
 }
