@@ -8,6 +8,7 @@ import Login from './pages/login/login';
 import SecureLayout from './layouts/secure-layout/secure-layout';
 import Home from './pages/home/home';
 import SignUp from './pages/sign-up/sign-up';
+import Profile from './pages/profile/profile';
 
 function App() {
   const [toastMessage] = useAtom(messageAtom);
@@ -36,9 +37,20 @@ function App() {
     <Routes>
       <Route path='/' element={<Login />} />
       <Route path='/sign' element={<SignUp />} />
-      <Route path='/home' element={<SecureLayout>
-        <Home />
-      </SecureLayout>} />
+      <Route path='/home'
+        element={
+          <SecureLayout>
+            <Home />
+          </SecureLayout>
+        }
+      />
+      <Route path='/profile'
+        element={
+          <SecureLayout>
+            <Profile />
+          </SecureLayout>
+        }
+      />
     </Routes>
   );
 }

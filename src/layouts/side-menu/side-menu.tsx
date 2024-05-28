@@ -19,7 +19,7 @@ const SideMenu = () => {
             <div className='header-container'>
                 <Image src={logo} alt='logo' className='logo' style={{ height: "80px" }} />
                 <div className='options-container'>
-                    <div className='option'>
+                    <div className='option' onClick={()=>navigate('/home')}>
                         <HomeOutlined />
                         <span>Ana sayfa</span>
                     </div>
@@ -35,7 +35,7 @@ const SideMenu = () => {
                         <PlusCircleOutlined />
                         <span>Add</span>
                     </div>
-                    <div className='option'>
+                    <div className='option' onClick={() => { navigate('/profile') }}>
                         <EKAvatar />
                         <span>Profile</span>
                     </div>

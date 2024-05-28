@@ -5,8 +5,9 @@ import { useAtom } from 'jotai'
 import { ListPostResponseModel } from '../../api/models/list-post-response-model'
 import { messageAtom } from '../../store/global-atoms'
 import { useAxiosServiceClient } from '../../services/axios'
-import EKCard from '../../components/ek-card/ek-card'
 import CreatePostCard from '../../components/create-post-card/create-post-card'
+import { Flex } from 'antd'
+import PostCard from '../../components/post-card/post-card'
 
 const Home = () => {
 
@@ -29,14 +30,19 @@ const Home = () => {
 
     return (
         <BaseLayout>
-            <div className='timeline_container'>
-                <CreatePostCard onSuccessAction={fetchPosts} />
-                {
-                    posts.map((post) => {
-                        return <EKCard data={post} />
-                    })
-                }
-            </div>
+            <Flex gap={"2rem"}>
+                <div className='timeline_container'>
+                    <CreatePostCard onSuccessAction={fetchPosts} />
+                    {
+                        posts.map((post) => {
+                            return <PostCard data={post} />
+                        })
+                    }
+                </div>
+                <div>
+                    <span>3</span>
+                </div>
+            </Flex>
         </BaseLayout>
     )
 }

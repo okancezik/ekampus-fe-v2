@@ -14,11 +14,14 @@ const BaseLayout = (props: BaseLayoutProps) => {
             <Col xs={0} md={4} lg={3}>
                 <SideMenu />
             </Col>
-            <Col xs={24} md={12} lg={8}>
+            <Col xs={24} md={18} lg={8}>
+                {props.children}
+            </Col>
+            {/* <Col xs={24} md={12} lg={8}>
                 {props.children}
             </Col>
             <Col xs={0} md={4} lg={3} >3</Col>
-            <Col xs={0} md={2} lg={5}></Col>
+            <Col xs={0} md={2} lg={5}></Col> */}
         </Row>
     )
 }
